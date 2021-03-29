@@ -1,0 +1,87 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %} 
+
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Orders</h5>
+
+           
+            <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                <h5>Filter Search</h5>
+                    <form method="get">
+                        {{myFilter.form}}
+        
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </form>
+        
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Update</th>
+                    <th>Remove</th>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                </tr>
+                {% for i in orders %}
+                    <tr><td><a class="btn btn-sm btn-info" href="{% url 'update_order' i.id %}">Update</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' i.id %}">Delete</a></td>
+                       
+                        <td>{{i.id}}</td>
+                        <td>{{i.customer}}</td>
+                        <td>{{i.product}}</td>
+                        <td>{{i.status}}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                    {% if orders.has_other_pages %}
+                <ul class="pagination">
+                    {% if users.has_previous %}
+                    <li><a href="?page={{ orders.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in orders.paginator.page_range %}
+                    {% if orders.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if orders.has_next %}
+                    <li><a href="?page={{ orders.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+                <span>
+                    <table3>
+                        <a class="btn btn-primary  btn-sm btn-sm" href="{% url 'order_create' %}">Create Order</a>
+                      <p>
+                      <div>
+                      <a class="btn btn-primary  btn-sm btn-sm" href="{% url 'export' %}">Download CSV</a>
+                      </div> 
+                      </p>
+                      <div>
+                      <input type=button value="Print Page" onClick="javascript:window.print()">
+                      </div>
+                  </table3>
+                </span>
+
+        </div>
+    </div>
+    
+</div>   
+{% endblock content %}  

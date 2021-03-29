@@ -1,0 +1,95 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Products</h5>
+					</div>
+				<div class="row">
+					<div class="col">
+						<div class="card card-body">
+							<h5>Filter Search</h5>
+							<form method="get">
+								{{myFilter.form}}
+				
+							<button class="btn btn-primary" type="submit">Search</button>
+						  </form>
+				
+						</div>
+					</div>
+					
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Update</th>
+							<th>Remove</th>
+							<th>Product</th>
+							<th>Category</th>
+							<th>Price</th>
+
+						</tr>
+
+						{% for i in products %}
+							<tr>
+								<td><a class="btn btn-sm btn-info" href="{% url 'update_product' i.id %}">Update</a></td>
+								<td><a class="btn btn-sm btn-danger" href="{% url 'delete_product' i.id %}">Delete</a></td>
+								<td>{{i.name}}</td>
+								<td>{{i.category}}</td>
+								<td>{{i.price}}</td>
+								</tr>
+
+
+						{% endfor %}
+						</table>
+						{% if products.has_other_pages %}
+						<ul class="pagination">
+							{% if products.has_previous %}
+							<li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+							{% else %}
+							<li class="disabled"><span>&laquo;</span></li>
+							{% endif %}
+							{% for i in products.paginator.page_range %}
+							{% if products.number == i %}
+								<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+							{% else %}
+								<li><a href="?page={{ i }}">{{ i }}</a></li>
+							{% endif %}
+							{% endfor %}
+							{% if products.has_next %}
+							<li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+							{% else %}
+							<li class="disabled"><span>&raquo;</span></li>
+							{% endif %}
+									</ul>
+						{% endif %}
+						<span>
+							<table3>
+								<p>
+								<a class="btn btn-primary  btn-sm btn-sm" href="{% url 'product_create' %}">Create Product</a>
+								</p>
+								<p>
+								<a class="btn btn-primary  btn-sm btn-sm" href="{% url 'tag_create' %}">Create Product Tag </a>
+								</p>
+								<p>
+								<a class="btn btn-primary  btn-sm btn-sm" href="{% url 'upload' %}">Upload Product Image </a>
+							  <div>
+							  <a class="btn btn-primary  btn-sm btn-sm" href="{% url 'export' %}">Download CSV</a>
+							  </div> 
+							  </p>
+							  <div>
+							  <input type=button value="Print Page" onClick="javascript:window.print()">
+							  </div>
+						  </table3>
+						</span>
+	
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}

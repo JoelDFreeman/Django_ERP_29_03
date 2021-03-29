@@ -1,0 +1,114 @@
+	#logo{
+		}
+
+	body{
+		background-color: #ebeff5; 
+	}
+
+
+	#total-orders{
+		background-color: #BD1721;
+	}
+
+
+	#orders-delivered{
+		background-color: #34516C;
+	}
+
+	#orders-pending{
+		background-color: #841017;
+	}
+
+	.pagination {
+		clear:both;
+		position:relative;
+		font-size:16px;
+		text-align:center;
+	}
+	
+	.pagination span, .pagination a {
+		display:inline-block;
+		margin: 2px 2px 2px 0;
+		padding:6px 9px 5px 9px;
+		text-decoration:none;
+		color: rgb(0, 0, 0);
+		background: rgb(255, 253, 253);
+	}
+	
+	.pagination .active{
+		font-weight: bold;
+		background: rgba(255, 253, 253, 0.39);
+	}
+
+	  
+
+  	.footer-content-right {
+		padding-right:40px;
+		margin: 5px 2px;
+		float:right;
+	}
+	.fa {
+		padding: 20px;
+		font-size: 30px;
+		width: 50px;
+		text-align: center;
+		text-decoration: none;
+		margin: 5px 2px;
+	}
+	
+	.fa:hover {
+		opacity: 0.7;
+	}
+  	.fa-facebook {
+		background: #3B5998;
+	  	color: white;
+  	}
+
+  	.fa-twitter {
+		background: #55ACEE;
+	  	color: white;
+  	}
+  	.fa-linkedin {
+		background: #007bb5;
+		color: white;
+  	}
+	.hello-msg{
+		font-size: 18px;
+		margin-right: 20px;
+	}
+
+	.table {
+		border-collapse: collapse;
+		margin: 25px 0;
+		font-size: 18px;
+
+	}
+	.table tr{
+		background-color: #34516C;
+		color: #000000;
+		text-align: left;
+
+	}
+
+
+	.h5 {
+		font-size: 25px;
+	}
+
+	.table{
+		width:auto;
+		height:auto;
+	}
+
+	.table2{
+		width:auto;
+		height:auto;
+		position: static;
+	}
+
+	.table3{
+		width:auto;
+		height:auto;
+		position: static;
+	}
+

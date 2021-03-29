@@ -1,0 +1,15 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<form method='POST'> {% csrf_token %}
+{{ form.as_p }}    
+<input type='submit' value='Save' /> 
+</form>
+<form>
+    <input type=button value="Print Order" onClick="javascript:window.print()">
+</form>
+{%  include 'accounts/room.html' %}
+
+{% endblock %}
+
